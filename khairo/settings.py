@@ -11,7 +11,7 @@ DATABASE_URI = os.getenv("DATABASE_URL")
 ACCESS_TOKEN_EXPIRE_TIME = os.getenv("ACCESS_TOKEN_EXPIRE_TIME")
 REFRESH_TOKEN_EXPIRE_TIME = os.getenv("REFRESH_TOKEN_EXPIRE_TIME")
 # url in localhost        url in production
-WEBSITE_URL = "http://127.0.0.1:8000"  # "https://khairodiet.herokuapp.com"
+WEBSITE_URL = "https://khairodiet.herokuapp.com" #"http://127.0.0.1:8000" 
 WEBSITE_NAME = "khairo"
 API_BASE_URI = "/api/v1"
 BASE_DIR = Path.cwd()

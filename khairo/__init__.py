@@ -3,11 +3,14 @@ from mongoengine import connect, disconnect
 from fastapi.middleware.cors import CORSMiddleware
 from khairo.settings import DEBUG, DATABASE_URI
 from khairo.backend.view import accountView
-
+from fastapi.responses import RedirectResponse
 
 
 app = FastAPI(debug=DEBUG)
 
+@app.get("/")
+async  def docs():
+    return RedirectResponse("/docs", status_code=302)
 
 app.include_router(accountView.router)
 origins = [
