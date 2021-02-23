@@ -1,18 +1,21 @@
 from fastapi import FastAPI
-from mongoengine import connect, disconnect
 from fastapi.middleware.cors import CORSMiddleware
-from khairo.settings import DEBUG, DATABASE_URI
-from khairo.backend.view import accountView
 from fastapi.responses import RedirectResponse
+from mongoengine import connect, disconnect
 
+from khairo.backend.view import accountView, serviceView
+from khairo.settings import DEBUG, DATABASE_URI
 
 app = FastAPI(debug=DEBUG)
 
+
 @app.get("/")
-async  def docs():
+async def docs():
     return RedirectResponse("/docs", status_code=302)
 
+
 app.include_router(accountView.router)
+app.include_router(serviceView.router)
 origins = [
     "http://localhost:3000",
 ]
