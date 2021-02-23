@@ -1,23 +1,20 @@
-
 import os
-import shutil
-from pathlib import Path
 from uuid import uuid4
 
-from fastapi import APIRouter, Depends, File, UploadFile, status
+from fastapi import APIRouter, Depends, status
+from mongoengine.errors import NotUniqueError
+
 from khairo.backend.mixins.generalMixin import KhairoFullMixin
 from khairo.backend.model.services.serviceModel import (Categories, Service,
                                                         ServiceOption)
-from fastapi.background import BackgroundTasks
 from khairo.backend.model.services.servicesPydanticModel import (
     CategoryInput, CategoryUpdateInput, OptionInput, OptionUpdateInput,
     ServiceInput, ServiceUpdateInput)
 from khairo.backend.model.userModel.accountMixin import AccountManager
 from khairo.settings import (API_BASE_URI, STATIC_DIR, STATIC_FILE_NAME,
                              WEBSITE_URL)
-from mongoengine.errors import NotUniqueError
 
-router = APIRouter(prefix=API_BASE_URI)
+router = APIRouter(prefix=API_BASE_URI, tags=["Service"])
 
 #  service logic start
 

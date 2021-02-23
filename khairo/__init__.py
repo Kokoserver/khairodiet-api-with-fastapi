@@ -9,7 +9,7 @@ from khairo.settings import DEBUG, DATABASE_URI
 app = FastAPI(debug=DEBUG)
 
 
-@app.get("/")
+@app.get("/", include_in_schema=False)
 async def docs():
     return RedirectResponse("/docs", status_code=302)
 
