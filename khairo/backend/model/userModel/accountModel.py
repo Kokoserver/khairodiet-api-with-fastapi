@@ -1,6 +1,7 @@
-from uuid import uuid4
 from datetime import datetime
+
 from mongoengine import *
+
 from khairo.backend.model.services.serviceModel import Service
 
 
@@ -11,9 +12,10 @@ class UserAccount(Document):
     phoneNo = StringField(required=True)
     gender = StringField(required=True, choices=("male", "female", "other"))
     password = StringField(required=True)
-    active_plan = ReferenceField(Service, dbref=True)
+    active_plan = ListField(ReferenceField(Service, dbref=True))
     active = BooleanField(default=False)
     admin = BooleanField(default=False)
+    dietician = BooleanField(default=False)
     created_at = DateField(default=datetime.utcnow)
     meta = {"collection": "user"}
 

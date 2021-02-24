@@ -2,11 +2,12 @@ from fastapi import APIRouter, status, Depends
 from fastapi.background import BackgroundTasks
 from fastapi.responses import Response
 from mongoengine import errors
+
+from khairo.backend.mixins.generalMixin import KhairoFullMixin
 from khairo.backend.model.userModel import accountModel
 from khairo.backend.model.userModel.accountMixin import AccountManager
-from khairo.backend.mixins.generalMixin import KhairoFullMixin
 from khairo.backend.model.userModel.accountPydanticModel import (UserRegisterationInput, UserLoginInput,
-                                                                 UserPasswordReset, GetPasswordResetLink, UserAccountConfirm)
+                                                                 UserPasswordReset, GetPasswordResetLink)
 from khairo.settings import WEBSITE_URL, WEBSITE_NAME, API_BASE_URI
 
 router = APIRouter(prefix=f"{API_BASE_URI}", tags=["User Account"])
@@ -15,7 +16,7 @@ router = APIRouter(prefix=f"{API_BASE_URI}", tags=["User Account"])
 @router.post("/register")
 def registerUserAccount(user: UserRegisterationInput, background: BackgroundTasks):
     if accountModel.UserAccount.get_singleUserByEmail(email=user.email):
-        ErrorResponse = {"error": "Account already exist"}
+        ErrorResponse = {"message": "Account already exist"}
         return KhairoFullMixin.Response(userMessage=ErrorResponse,
                                         status_code=status.HTTP_400_BAD_REQUEST)
     if user.password == user.confirmPassword:
@@ -29,24 +30,20 @@ def registerUserAccount(user: UserRegisterationInput, background: BackgroundTask
                 "gender": user.gender.lower(),
                 "password": password
             }
-            newUser = accountModel.UserAccount(
-                **newUserDetails).save(clean=True)
+            newUser = accountModel.UserAccount(**newUserDetails).save(clean=True)
             if newUser:
                 mailData = {
                     "title": "Khairo diet Account verification",
                     "message": f" Welcome to {WEBSITE_NAME}, {newUser.firstname} { newUser.lastname}\n "
-                    f"Your account was created successfully please "
-                    f"verify your email to continue\n {user.email_verify_url}/{newUser.id}"
+                               f"Your account was created successfully please "
+                               f"click on the link below  to verify your email to continue\n {user.email_verify_url}/{newUser.id}/verify"
                 }
 
                 background.add_task(KhairoFullMixin.mailUser, userEmail=newUser.email,
                                     emailTitle=mailData.get("title"),
                                     emailMessage=mailData.get("message"))
-
                 SuccessResponseData = {
-                    "user": {"firstname": newUser.firstname, "lastname": newUser.lastname},
-                    "message": "Account was created successfully, A mail was sent to your to confirm your email address"
-                }
+                    "message": "Account was created successfully, A mail was sent to your to confirm your email address"}
 
                 return KhairoFullMixin.Response(userMessage=SuccessResponseData,
                                                 status_code=status.HTTP_201_CREATED)
@@ -71,28 +68,16 @@ def registerUserAccount(user: UserRegisterationInput, background: BackgroundTask
                                     status_code=status.HTTP_400_BAD_REQUEST)
 
 
-@router.post("/user")
-def confirmEmail(user: UserAccountConfirm):
-    user = accountModel.UserAccount.objects(id=user.userId).first()
+@router.post("/user/{userId}/activate")
+def confirmEmail(userId: str):
+    user = accountModel.UserAccount.objects(id=userId).first()
     if user:
         if user.active:
-            responseData = {"message": "account already activated", "detail": {
-                "login": "you can login in the the url below",
-                "url": f"{user.login_url}",
-                "body": {"email": "string", "password": "string"}
-            }}
+            responseData = {"message": "account already activated"}
             return KhairoFullMixin.Response(userMessage=responseData,
-                                            status_code=status.HTTP_401_UNAUTHORIZED)
+                                            status_code=status.HTTP_400_BAD_REQUEST)
         user.update(active=True)
-        SuccessResponseData = {
-            "user": user.to_json(indent=4),
-            "message": "Account verified successfully",
-            "extra": {
-                "login": "please login to continue",
-                "method": "post",
-                "body": {"email": "string", "password": "string"}
-            }
-        }
+        SuccessResponseData = {"message": "Account verified successfully"}
         return KhairoFullMixin.Response(userMessage=SuccessResponseData,
                                         status_code=status.HTTP_200_OK)
     ErrorResponseData = {"message": "Account does not exist"}

@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f98522bf-89f8-41a3-9eb6-eaed111e8d65" name="Default Changelist" comment="first commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/khairo/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/khairo/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/khairo/backend/view/serviceView.py" beforeDir="false" afterPath="$PROJECT_DIR$/khairo/backend/view/serviceView.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/khairo/backend/model/userModel/accountModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/khairo/backend/model/userModel/accountModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/khairo/backend/model/userModel/accountPydanticModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/khairo/backend/model/userModel/accountPydanticModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/khairo/backend/view/accountView.py" beforeDir="false" afterPath="$PROJECT_DIR$/khairo/backend/view/accountView.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,8 +38,8 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../khairoView" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -93,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614045947660</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="making changes">
+      <created>1614046386581</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1614046386581</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="UpdateCopyrightCheckinHandler">

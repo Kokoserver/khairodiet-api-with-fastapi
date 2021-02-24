@@ -26,9 +26,6 @@ class GetPasswordResetLink(BaseModel):
     passwordReset_url: str
 
 
-class UserAccountConfirm(BaseModel):
-    userId: str
-    login_url: str
 
 
 class UserPasswordReset(BaseModel):
