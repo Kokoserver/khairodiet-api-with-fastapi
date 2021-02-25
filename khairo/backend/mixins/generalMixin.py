@@ -1,7 +1,9 @@
-from fastapi.responses import JSONResponse
-import smtplib
-from khairo.settings import EMAIL, PASSWORD
 import shutil
+import smtplib
+
+from fastapi.responses import JSONResponse
+
+from khairo.settings import EMAIL, PASSWORD
 
 
 class KhairoFullMixin:
@@ -34,10 +36,8 @@ class KhairoFullMixin:
                 message = f"subject:{emailTitle}\n\n {emailMessage}"
                 access360Mail.sendmail(EMAIL, userEmail, message)
                 ######################### return success message #######################
-                print("message sent successfully")
                 return "message sent successfully"
 
             except Exception:
                 ######################### return error if mail failed to send #######################
-                print("message sent successfully")
                 return "Error sending message"

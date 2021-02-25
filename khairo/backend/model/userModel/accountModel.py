@@ -35,6 +35,7 @@ class UserAccount(Document):
             "email": self.email,
             "phoneNo": self.phoneNo,
             "active_plan": self.active_plan,
+            "dietician": self.dietician,
             "active": self.active,
             "admin": self.admin,
             "created_at": str(self.created_at)
