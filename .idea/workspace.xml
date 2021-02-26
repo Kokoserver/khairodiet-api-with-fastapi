@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f98522bf-89f8-41a3-9eb6-eaed111e8d65" name="Default Changelist" comment="making changes to user model">
+      <change afterPath="$PROJECT_DIR$/khairo/backend/static/0eda1b78155f4e6b80cf693109cd5b6dkokoserver_profile.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/khairo/backend/static/84186c4052984286bc8a51967262bb3ekokoserver_profile.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/khairo/backend/static/cd2165317df94bbfa787aadb1cc0048ckokoserver_profile.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/khairo/backend/mixins/generalMixin.py" beforeDir="false" afterPath="$PROJECT_DIR$/khairo/backend/mixins/generalMixin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/khairo/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/khairo/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/khairo/backend/model/userModel/accountModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/khairo/backend/model/userModel/accountModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/khairo/backend/view/serviceView.py" beforeDir="false" afterPath="$PROJECT_DIR$/khairo/backend/view/serviceView.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/khairo/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/khairo/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614137069587</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="making changes to user model">
+      <created>1614266039935</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1614266039935</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="UpdateCopyrightCheckinHandler">

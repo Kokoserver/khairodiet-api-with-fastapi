@@ -15,7 +15,7 @@ class UserAccount(Document):
     active_plan = ListField(ReferenceField(Service, dbref=True))
     active = BooleanField(default=False)
     admin = BooleanField(default=False)
-    dietician = BooleanField(default=False)
+    dietitian = BooleanField(default=False)
     created_at = DateField(default=datetime.utcnow)
     meta = {"collection": "user"}
 
@@ -35,7 +35,7 @@ class UserAccount(Document):
             "email": self.email,
             "phoneNo": self.phoneNo,
             "active_plan": self.active_plan,
-            "dietician": self.dietician,
+            "dietitian": self.dietitian,
             "active": self.active,
             "admin": self.admin,
             "created_at": str(self.created_at)
