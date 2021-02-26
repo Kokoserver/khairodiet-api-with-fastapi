@@ -145,15 +145,18 @@ def loginUserAccount(userIn: UserLoginInput, response: Response):
                                         expires=172800,
                                         domain=WEBSITE_URL,
                                         secure=True)
-                    SuccessResponseData = {
-                        "user": user.to_json(indent=4),
-                        "message": "logged in successfully",
-                        "access_token": encode_jwt_access,
-                        "access_token_type": "Bearer",
-                        "expires": "2 days"
-                    }
-                    return KhairoFullMixin.Response(userMessage=SuccessResponseData,
-                                                    status_code=status.HTTP_200_OK)
+                plan = accountModel.UserPlan.get_user_plan(userId=user.id)
+                SuccessResponseData = {
+                    "user": user.to_json(indent=4),
+                    "plan": plan.active_plan.to_json() if plan else None,
+                    "message": "logged in successfully",
+                    "access_token": encode_jwt_access,
+                    "access_token_type": "Bearer",
+                    "expires": "2 days"
+                }
+                return KhairoFullMixin.Response(userMessage=SuccessResponseData,
+                                                status_code=status.HTTP_200_OK)
+
             ErrorResponseData = {"message": "Password does not match"}
             return KhairoFullMixin.Response(userMessage=ErrorResponseData,
                                             status_code=status.HTTP_401_UNAUTHORIZED)
@@ -170,4 +173,7 @@ def loginUserAccount(userIn: UserLoginInput, response: Response):
 
 @router.get("/me")
 def getUserAccount(user: dict = Depends(AccountManager.authenticate_user)):
-    return user
+    plan = accountModel.UserPlan.get_user_plan(userid=user["id"])
+    return KhairoFullMixin.Response({"user": user,
+                                     "plan": plan.active_plan.to_json() if plan else None},
+                                    status_code=status.HTTP_200_OK)

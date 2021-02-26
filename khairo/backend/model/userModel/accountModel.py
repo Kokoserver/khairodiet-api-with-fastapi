@@ -5,14 +5,13 @@ from mongoengine import *
 from khairo.backend.model.services.serviceModel import Service
 
 
-class UserAccount(Document):
+class UserAccount(DynamicDocument):
     firstname = StringField(required=True, min_length=3)
     lastname = StringField(required=True, min_length=3)
-    email = EmailField(required=True,  unique=True)
+    email = EmailField(required=True, unique=True)
     phoneNo = StringField(required=True)
     gender = StringField(required=True, choices=("male", "female", "other"))
     password = StringField(required=True)
-    active_plan = ListField(ReferenceField(Service, dbref=True))
     active = BooleanField(default=False)
     admin = BooleanField(default=False)
     dietitian = BooleanField(default=False)
@@ -34,9 +33,18 @@ class UserAccount(Document):
             "lastname": self.lastname,
             "email": self.email,
             "phoneNo": self.phoneNo,
-            "active_plan": self.active_plan,
             "dietitian": self.dietitian,
             "active": self.active,
             "admin": self.admin,
             "created_at": str(self.created_at)
         }
+
+
+class UserPlan(Document):
+    user = ObjectIdField(required=True)
+    active_plan = ReferenceField(Service, dbref=True, required=True)
+    created_at = DateField(default=datetime.utcnow)
+
+    @queryset_manager
+    def get_user_plan(doc_cls, queryset, userId):
+        return queryset.filter(id=userId).first()
