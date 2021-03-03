@@ -10,7 +10,7 @@ class Categories(Document):
         return{
             "id": str(self.id),
             "categories": self.category,
-            "created_at": self.created_at
+            "created_at": str(self.created_at)
 
         }
 

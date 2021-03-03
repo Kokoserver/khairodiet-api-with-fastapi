@@ -254,7 +254,7 @@ async def create_service_category(category: CategoryUpdateInput, user: dict = De
 async def create_service_category():
     get_all_category = Categories.get_all_category()
     if get_all_category:
-        return KhairoFullMixin.Response(userMessage={"category": [category.to_json() for category in get_all_category]}, status_code=status.HTTP_200_OK)
+        return KhairoFullMixin.Response(userMessage={"category": [category.to_json() for category in Categories.get_all_category() ]}, status_code=status.HTTP_200_OK)
     return KhairoFullMixin.Response(userMessage={"message": "no category is found"},
                                     status_code=status.HTTP_404_NOT_FOUND)
 

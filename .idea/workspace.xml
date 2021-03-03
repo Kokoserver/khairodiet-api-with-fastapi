@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f98522bf-89f8-41a3-9eb6-eaed111e8d65" name="Default Changelist" comment="making changes to settings variables.">
+    <list default="true" id="f98522bf-89f8-41a3-9eb6-eaed111e8d65" name="Default Changelist" comment="creating user plan">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/khairo/backend/model/userModel/accountModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/khairo/backend/model/userModel/accountModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/khairo/backend/view/accountView.py" beforeDir="false" afterPath="$PROJECT_DIR$/khairo/backend/view/accountView.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/khairo/backend/model/services/serviceModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/khairo/backend/model/services/serviceModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/khairo/backend/view/serviceView.py" beforeDir="false" afterPath="$PROJECT_DIR$/khairo/backend/view/serviceView.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614342583624</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="creating user plan">
+      <created>1614354830431</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1614354830515</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="UpdateCopyrightCheckinHandler">
@@ -155,7 +162,8 @@
     <MESSAGE value="making changes" />
     <MESSAGE value="making changes to user model" />
     <MESSAGE value="making changes to settings variables." />
-    <option name="LAST_COMMIT_MESSAGE" value="making changes to settings variables." />
+    <MESSAGE value="creating user plan" />
+    <option name="LAST_COMMIT_MESSAGE" value="creating user plan" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
